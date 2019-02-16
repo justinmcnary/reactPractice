@@ -7,9 +7,10 @@ var app = {
   title: 'The Double Deuce',
   subtitle: 'Home of Dalton',
   options: ['One', 'Two']
+};
 
-  //JSX Javascript XML
-};var template = React.createElement(
+//JSX Javascript XML
+var template = React.createElement(
   'div',
   null,
   React.createElement(
@@ -33,13 +34,15 @@ var app = {
 var count = 0;
 var incrementCount = function incrementCount() {
   count++;
-  console.log(count);
+  renderCounterApp();
 };
 var subtractCount = function subtractCount() {
-  return console.log('Subtract');
+  count--;
+  renderCounterApp();
 };
 var resetCount = function resetCount() {
-  return console.log('Reset');
+  count = 0;
+  renderCounterApp();
 };
 
 var renderCounterApp = function renderCounterApp() {
