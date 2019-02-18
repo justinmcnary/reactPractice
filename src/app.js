@@ -2,46 +2,54 @@ console.log('App.js is running');
 const appRoot = document.getElementById('app');
 
 const app = {
-  title: 'The Double Deuce',
+  title: 'Indecision',
   subtitle: 'Home of Dalton',
-  options: ['One', 'Two']
+  options: []
 };
 
-//JSX Javascript XML
-const template = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? 'Here are your options' : 'No options are currently available'}</p>
-  </div>
-);
-// ReactDOM.render(template, appRoot);
+const onFormSubmit = (e) => {
+  e.preventDefault(); //stops fill page reset
+  const option = e.target.elements.option.value;
 
-let count = 0;
-const incrementCount = () => {
-  count++;
-  renderCounterApp();
-};
-const subtractCount = () => {
-  count--;
-  renderCounterApp();
-};
-const resetCount = () => {
-  count = 0;
-  renderCounterApp();
+  if (option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+    renderApp();
+  };
 };
 
-const renderCounterApp = () => {
-  const templateTwo = (
+const resetOptions = () => {
+  app.options = [];
+  renderApp();
+};
+
+//Create remove all button above list of items
+//onclick handler wipes app.options
+
+
+const renderApp = () => {
+  //JSX Javascript XML
+  const template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={incrementCount}>+1</button>
-      <button onClick={subtractCount}>-1</button>
-      <button onClick={resetCount}>Reset</button>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      <p>{app.options.length > 0 ? 'Here are your options' : 'No options are currently available'}</p>
+      <p>{app.options.length}</p>
+      <button onClick={resetOptions}>Remove All</button>
+      <ol>
+        <li>Item one</li>
+        <li>Item two</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
     </div>
   );
 
-  ReactDOM.render(templateTwo, appRoot);
+  ReactDOM.render(template, appRoot);
 };
 
-renderCounterApp();
+renderApp();
+
+
