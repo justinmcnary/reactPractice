@@ -32,6 +32,11 @@ var IndecisionApp = function (_React$Component) {
         };
       });
     }
+
+    // Create new method handlePick - pass down to action and setup on click - bind here
+    // randomly pick option and alert it (onMakeDecision)
+    // remove handlePick from action
+
   }, {
     key: 'render',
     value: function render() {

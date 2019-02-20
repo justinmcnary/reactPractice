@@ -15,6 +15,10 @@ class IndecisionApp extends React.Component {
     })
   }
 
+  // Create new method handlePick - pass down to action and setup on click - bind here
+  // randomly pick option and alert it (onMakeDecision)
+  // remove handlePick from action
+
   render() {
     const title = 'Indecision...';
     const subtitle = 'Put your life in the hands of a gremlin hiding inside your computer.';
